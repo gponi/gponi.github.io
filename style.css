@@ -1,238 +1,80 @@
-/* Reset Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Custom CSS */
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-}
-
-/* General Styles */
 body {
-    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#navbar {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#navbar .nav-link {
+    color: #fff;
+    margin-left: 15px;
+    transition: color 0.3s;
+}
+
+#navbar .nav-link:hover {
+    color: #007bff;
+}
+
+header {
+    background: url('assets/hero-background.jpg')  center center/cover;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+header .display-4 {
+    font-weight: 700;
+}
+
+header .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.section-title {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.skills i {
+    color: #007bff;
+}
+
+.skills h5 {
+    margin-top: 10px;
+}
+
+.social-icons a {
     color: #ffffff;
-    background-color: #1a1a1a;
-}
-
-/* Interactive Background */
-#particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-/* Navigation Styles */
-nav {
-    position: fixed;
-    width: 100%;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    background: transparent;
-    transition: background 0.3s;
-}
-
-nav.scrolled {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-nav .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-}
-
-nav .menu {
-    list-style: none;
-    display: flex;
-}
-
-nav .menu li {
-    margin-left: 30px;
-}
-
-nav .menu li a {
-    color: #fff;
-    font-size: 16px;
     transition: color 0.3s;
 }
 
-nav .menu li a:hover {
-    color: #ff6b6b;
+.social-icons a:hover {
+    color: #007bff;
 }
 
-/* Sections */
-section {
-    min-height: 100vh;
-    padding: 100px 50px;
-    position: relative;
-}
-
-#home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-#home .intro h1 {
-    font-size: 4em;
-    margin-bottom: 20px;
-    color: #ff6b6b;
-}
-
-#home .intro p {
-    font-size: 1.5em;
-    margin-bottom: 40px;
-}
-
-.btn {
-    padding: 15px 30px;
-    background-color: #ff6b6b;
-    color: #fff;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.btn:hover {
-    background-color: #ff4757;
-}
-
-/* About, Skills, Projects, Contact Sections */
-h2 {
-    font-size: 3em;
-    text-align: center;
-    margin-bottom: 50px;
-    color: #ff6b6b;
-}
-
-p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-    color: #dcdde1;
-}
-
-.skills-grid, .projects-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.skill, .project {
-    margin: 20px;
-    flex: 1 1 300px;
-    position: relative;
-}
-
-.skill i {
-    font-size: 5em;
-    color: #ff6b6b;
-    margin-bottom: 20px;
-}
-
-.skill h3, .project-info h3 {
-    font-size: 1.5em;
-    color: #fff;
-}
-
-.project img {
-    width: 100%;
-    border-radius: 15px;
-}
-
-.project-info {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 10px;
-    border-radius: 10px;
-}
-
-/* Contact Form */
-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
-    background: #2f3640;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-}
-
-input::placeholder, textarea::placeholder {
-    color: #7f8fa6;
-}
-
-button[type="submit"] {
-    width: 100%;
-}
-
-/* Footer */
 footer {
-    padding: 20px;
-    background: #1a1a1a;
-    text-align: center;
+    position: relative;
 }
 
-footer p {
-    color: #7f8fa6;
-    margin-bottom: 10px;
-}
-
-footer .socials a {
-    color: #7f8fa6;
-    margin: 0 10px;
-    font-size: 1.5em;
-    transition: color 0.3s;
-}
-
-footer .socials a:hover {
-    color: #ff6b6b;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    nav .menu {
-        display: none;
-    }
-
-    /* You may want to add a hamburger menu icon and functionality here */
-
-    section {
-        padding: 100px 20px;
-    }
-
-    h2 {
-        font-size: 2.5em;
-    }
-
-    #home .intro h1 {
-        font-size: 3em;
-    }
-
-    .skills-grid, .projects-grid {
-        flex-direction: column;
-        align-items: center;
+    header {
+        text-align: center;
     }
 }
