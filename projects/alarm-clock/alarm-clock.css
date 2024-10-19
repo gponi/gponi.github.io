@@ -1,0 +1,57 @@
+/* Alarm Clock Styles */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: black;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#clock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#alarm-status {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#clock {
+    font-size: 5em;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#time-picker {
+    margin-bottom: 20px;
+}
+
+#time-picker select {
+    font-size: 1.2em;
+    padding: 5px;
+    margin: 0 5px;
+}
+
+#set-alarm-btn {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#set-alarm-btn.active {
+    background-color: red;
+    color: white;
+}
+

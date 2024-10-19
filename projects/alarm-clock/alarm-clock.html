@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alarm Clock App | Gannon Ponichtera</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="alarm-clock.css">
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    >
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="../../index.html">Gannon Ponichtera</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html#home">Home</a>
+            </li>
+            <!-- ... other navigation links ... -->
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Alarm Clock App</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Clock Container -->
+    <div id="clock-container">
+      <div id="alarm-status"></div>
+      <div id="clock"></div>
+      <div id="controls">
+          <!-- Time Picker -->
+          <div id="time-picker">
+              <select id="hours">
+                  <!-- Hours will be populated by JavaScript -->
+              </select>
+              :
+              <select id="minutes">
+                  <!-- Minutes will be populated by JavaScript -->
+              </select>
+              <select id="ampm">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+              </select>
+          </div>
+          <!-- Set/Cancel Alarm Button -->
+          <button id="set-alarm-btn">Set Alarm</button>
+      </div>
+  </div>
+    
+
+     <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+      <div class="container text-center">
+        <p>&copy; 2024 Gannon Ponichtera</p>
+        <div class="social-icons">
+          <a href="https://github.com/gponi" class="text-light mx-2">
+            <i class="fab fa-github fa-2x"></i>
+          </a>
+          <a href="https://linkedin.com/in/gannon-ponichtera" class="text-light mx-2">
+            <i class="fab fa-linkedin fa-2x"></i>
+          </a>
+          <!-- Add more social links if needed -->
+        </div>
+      </div>
+    </footer>
+
+ <!-- Alarm Sound -->
+ <audio id="alarm-sound">
+  <source src="Sounds/sound1.mp3" type="audio/mpeg">
+</audio>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <!-- Custom JS -->
+    <script src="alarm-clock.js"></script>
+</body>
+</html>
