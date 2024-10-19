@@ -9,9 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const ampmSelect = document.getElementById('ampm');
     const alarmSound = document.getElementById('alarm-sound');
 
+    const soundSelector = document.getElementById('sound-selector');
+    const playSoundBtn = document.getElementById('play-sound-btn');
+    const uploadSoundBtn = document.getElementById('upload-sound-btn');
+    const customSoundInput = document.getElementById('custom-sound-input');
+
     let alarmTime = null;
-    let alarmTimeout = null;
     let isAlarmSet = false;
+    let isPlayingPreview = false;
+
+    // Initialize alarm sound source
+    alarmSound.src = `Sounds/${soundSelector.value}`;
 
     // Populate Hours and Minutes Dropdowns
     for (let i = 1; i <= 12; i++) {
@@ -69,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function cancelAlarm() {
         isAlarmSet = false;
         alarmTime = null;
-        clearTimeout(alarmTimeout);
         setAlarmBtn.textContent = 'Set Alarm';
         setAlarmBtn.classList.remove('active');
         alarmStatus.textContent = '';
@@ -84,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alarmStatus.textContent = 'Alarm ringing!';
     }
 
-    // Handle button click
+    // Handle Set/Cancel Alarm button click
     setAlarmBtn.addEventListener('click', () => {
         if (isAlarmSet) {
             if (alarmSound.paused) {
@@ -96,6 +103,53 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             setAlarm();
+        }
+    });
+
+    // Handle Sound Selector change
+    soundSelector.addEventListener('change', () => {
+        const selectedSound = soundSelector.value;
+        alarmSound.src = `Sounds/${selectedSound}`;
+    });
+
+    // Handle Play/Pause Sound button click
+    playSoundBtn.addEventListener('click', () => {
+        if (isPlayingPreview) {
+            alarmSound.pause();
+            alarmSound.currentTime = 0;
+            playSoundBtn.innerHTML = '<i class="fas fa-play"></i>';
+            isPlayingPreview = false;
+        } else {
+            const selectedSound = soundSelector.value;
+            alarmSound.src = `Sounds/${selectedSound}`;
+            alarmSound.play();
+            playSoundBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            isPlayingPreview = true;
+
+            // Ensure the play button resets when the sound ends
+            alarmSound.onended = () => {
+                playSoundBtn.innerHTML = '<i class="fas fa-play"></i>';
+                isPlayingPreview = false;
+            };
+        }
+    });
+
+    // Handle Upload Sound button click
+    uploadSoundBtn.addEventListener('click', () => {
+        customSoundInput.click();
+    });
+
+    // Handle Custom Sound Input change
+    customSoundInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const url = URL.createObjectURL(file);
+            const option = document.createElement('option');
+            option.value = url;
+            option.textContent = `CustomSound1`;
+            soundSelector.appendChild(option);
+            soundSelector.value = url;
+            alarmSound.src = url;
         }
     });
 

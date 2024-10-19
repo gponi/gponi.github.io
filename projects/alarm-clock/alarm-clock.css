@@ -17,15 +17,15 @@ body, html {
     height: 100%;
 }
 
-#alarm-status {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-}
-
 #clock {
     font-size: 5em;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+#alarm-status {
+    font-size: 1.5em;
+    margin-bottom: 20px;
 }
 
 #controls {
@@ -44,6 +44,29 @@ body, html {
     margin: 0 5px;
 }
 
+#sound-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#sound-controls select {
+    font-size: 1.2em;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+#play-sound-btn, #upload-sound-btn {
+    font-size: 1.2em;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#play-sound-btn i {
+    pointer-events: none;
+}
+
 #set-alarm-btn {
     font-size: 1.2em;
     padding: 10px 20px;
@@ -54,4 +77,3 @@ body, html {
     background-color: red;
     color: white;
 }
-

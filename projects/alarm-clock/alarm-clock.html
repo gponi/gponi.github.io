@@ -39,13 +39,7 @@
           id="navbarNav"
         >
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="../../index.html#home">Home</a>
-            </li>
-            <!-- ... other navigation links ... -->
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Alarm Clock App</a>
-            </li>
+            <!-- ... navigation links ... -->
           </ul>
         </div>
       </div>
@@ -53,30 +47,49 @@
 
     <!-- Clock Container -->
     <div id="clock-container">
-      <div id="alarm-status"></div>
-      <div id="clock"></div>
-      <div id="controls">
-          <!-- Time Picker -->
-          <div id="time-picker">
-              <select id="hours">
-                  <!-- Hours will be populated by JavaScript -->
-              </select>
-              :
-              <select id="minutes">
-                  <!-- Minutes will be populated by JavaScript -->
-              </select>
-              <select id="ampm">
-                  <option value="AM">AM</option>
-                  <option value="PM">PM</option>
-              </select>
-          </div>
-          <!-- Set/Cancel Alarm Button -->
-          <button id="set-alarm-btn">Set Alarm</button>
-      </div>
-  </div>
-    
+        <div id="clock"></div>
 
-     <!-- Footer -->
+        <!-- Alarm Status -->
+        <div id="alarm-status"></div>
+
+        <!-- Controls -->
+        <div id="controls">
+            <!-- Time Picker -->
+            <div id="time-picker">
+                <select id="hours">
+                    <!-- Hours will be populated by JavaScript -->
+                </select>
+                :
+                <select id="minutes">
+                    <!-- Minutes will be populated by JavaScript -->
+                </select>
+                <select id="ampm">
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+            </div>
+
+            <!-- Sound Selector -->
+            <div id="sound-controls">
+                <select id="sound-selector">
+                    <option value="sound1.mp3">Sound1</option>
+                    <option value="sound2.mp3">Sound2</option>
+                    <option value="sound3.mp3">Sound3</option>
+                </select>
+                <button id="play-sound-btn"><i class="fas fa-play"></i></button>
+                <input type="file" id="custom-sound-input" accept="audio/*" style="display:none;">
+                <button id="upload-sound-btn">Upload Sound</button>
+            </div>
+
+            <!-- Set/Cancel Alarm Button -->
+            <button id="set-alarm-btn">Set Alarm</button>
+        </div>
+    </div>
+
+    <!-- Alarm Sound -->
+    <audio id="alarm-sound" src="Sounds/sound1.mp3" loop></audio>
+    
+    <!-- Footer -->
     <footer class="bg-dark text-light py-4">
       <div class="container text-center">
         <p>&copy; 2024 Gannon Ponichtera</p>
@@ -84,18 +97,13 @@
           <a href="https://github.com/gponi" class="text-light mx-2">
             <i class="fab fa-github fa-2x"></i>
           </a>
-          <a href="https://linkedin.com/in/gannon-ponichtera" class="text-light mx-2">
+          <a href="https://linkedin.com/in/gannonponichtera" class="text-light mx-2">
             <i class="fab fa-linkedin fa-2x"></i>
           </a>
           <!-- Add more social links if needed -->
         </div>
       </div>
     </footer>
-
- <!-- Alarm Sound -->
- <audio id="alarm-sound">
-  <source src="Sounds/sound1.mp3" type="audio/mpeg">
-</audio>
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script
