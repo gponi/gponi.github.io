@@ -1,123 +1,379 @@
-/* Alarm Clock Styles */
-
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: black;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.5s ease;
+}
+
+body.dark-mode {
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  color: #ecf0f1;
+}
+
+.navbar {
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(10px);
+  transition: background 0.5s ease;
+}
+
+body.dark-mode .navbar {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  margin-left: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f6c23e !important;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+  transform: rotate(20deg);
+}
+
+/* Clock Container */
 #clock-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding-top: 60px; /* Adjust for fixed navbar height */
+  flex: 1;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
 
-#clock {
-    font-size: 5em;
+/* Digital Clock Display */
+.digital-clock {
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #2c3e50;
+  }
+
+  body.dark-mode .digital-clock {
+    color: #ecf0f1;
+  }
+
+
+  /* Reserve space for bookmarks to prevent layout shift */
+.bookmarks-container {
+    min-height: 200px; /* Adjust as needed based on expected content */
+  }
+
+  
+.clock-face {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 30px;
+  perspective: 1000px;
 }
 
-#alarm-status {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+#svg-clock {
+  width: 100%;
+  height: 100%;
+  /*transform: rotate(-90deg);*/
 }
 
-#controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#svg-clock circle {
+  stroke: #4e73df;
+  stroke-width: 4;
+  fill: none;
 }
 
-#time-picker {
-    margin-bottom: 20px;
+#svg-clock line {
 }
 
-#time-picker select {
-    font-size: 1.2em;
-    padding: 5px;
-    margin: 0 5px;
+.status-message {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #ff4d4d;
+  animation: fadeIn 1s ease;
 }
 
-#sound-controls {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  transition: background 0.5s ease;
 }
 
-#sound-controls select {
-    font-size: 1.2em;
-    padding: 5px;
-    margin-right: 10px;
+body.dark-mode .controls-container {
+  background: rgba(0, 0, 0, 0.5);
 }
 
-#play-sound-btn, #upload-sound-btn {
-    font-size: 1.2em;
-    padding: 5px 10px;
-    margin-right: 10px;
-    cursor: pointer;
+.control-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#play-sound-btn i {
-    pointer-events: none;
+.control-group label {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-#alarm-buttons {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+#alarm-time {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 200px;
+  font-size: 1rem;
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.1),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
 }
 
-#set-alarm-btn, #save-bookmark-btn {
-    font-size: 1.2em;
-    padding: 10px 20px;
-    margin-right: 10px;
-    cursor: pointer;
+body.dark-mode #alarm-time {
+  background: #2c3e50;
+  color: #ecf0f1;
 }
 
-#set-alarm-btn.active {
-    background-color: red;
-    color: white;
+.sound-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-#bookmarked-alarms {
-    margin-top: 30px;
-    text-align: center;
+#sound-selector {
+  width: 150px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.1),
+    inset -3px -3px 10px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.5s ease;
 }
 
-#bookmarked-alarms h3 {
-    margin-bottom: 20px;
+body.dark-mode #sound-selector {
+  background: #34495e;
+  color: #ecf0f1;
 }
 
-#bookmarks-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.uploaded-sound-name {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #f6c23e;
+}
+
+#volume-control {
+  width: 150px;
+  margin-top: 10px;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.5s ease;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+    -5px -5px 15px rgba(255, 255, 255, 0.1);
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2),
+    -10px -10px 20px rgba(255, 255, 255, 0.2);
+}
+
+.btn-success {
+  background: #1cc88a;
+  color: #fff;
+}
+
+.btn-warning {
+  background: #f6c23e;
+  color: #fff;
+}
+
+.btn-info {
+  background: #36b9cc;
+  color: #fff;
+}
+
+.bookmarks-container {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  transition: background 0.5s ease;
+}
+
+body.dark-mode .bookmarks-container {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.bookmarks-container h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4e73df;
+}
+
+.bookmarks-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 
 .bookmark-btn {
-    font-size: 1.2em;
-    padding: 10px 15px;
-    margin: 5px;
-    cursor: pointer;
-    background-color: #444;
-    color: white;
-    border: none;
-    border-radius: 5px;
+  position: relative;
+  padding: 10px 20px;
+  background: #4e73df;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+    -5px -5px 15px rgba(255, 255, 255, 0.1);
 }
 
 .bookmark-btn:hover {
-    background-color: #555;
+  background: #2e59d9;
+  transform: translateY(-3px);
 }
 
-.bookmark-btn .delete-icon {
-    margin-left: 10px;
-    color: red;
-    cursor: pointer;
+.delete-bookmark {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #e74a3b;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.delete-bookmark:hover {
+  background: #c0392b;
+}
+
+/* Footer */
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  transition: background 0.5s ease;
+}
+
+body.dark-mode footer {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+  margin-bottom: 10px;
+}
+
+.social-icons a {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #f6c23e;
+  transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes rotate-background {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Dark Mode Toggle */
+body.dark-mode .btn-success {
+  background: #28a745;
+}
+
+body.dark-mode .btn-warning {
+  background: #e2a03f;
+}
+
+body.dark-mode .btn-info {
+  background: #17a2b8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .controls-container {
+    flex-direction: column;
+  }
+
+  .sound-options {
+    flex-direction: column;
+  }
+
+  #sound-selector,
+  #volume-control {
+    width: 100%;
+  }
 }

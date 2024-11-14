@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Alarm Clock App | Gannon Ponichtera</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
-    >
+    />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="alarm-clock.css">
+    <link rel="stylesheet" href="alarm-clock.css" />
 
     <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    >
-</head>
-<body>
+    />
 
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
       <div class="container">
@@ -40,54 +45,160 @@
         >
           <ul class="navbar-nav">
             <!-- ... navigation links ... -->
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <button id="theme-toggle" class="btn btn-outline-light ms-3">
+                <i class="fas fa-moon"></i>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
     <!-- Clock Container -->
-    <div id="clock-container">
-        <div id="clock"></div>
+    <div
+      id="clock-container"
+      class="d-flex flex-column align-items-center justify-content-center"
+    >
+      <div id="clock" class="clock-face">
+        <!-- Clock SVG -->
+        <svg id="svg-clock" viewBox="0 0 200 200">
+          <circle
+            cx="100"
+            cy="100"
+            r="90"
+            stroke="#4e73df"
+            stroke-width="4"
+            fill="none"
+          />
+          <line
+            id="hour-hand"
+            x1="100"
+            y1="100"
+            x2="100"
+            y2="60"
+            stroke="#4e73df"
+            stroke-width="6"
+            stroke-linecap="round"
+          />
+          <line
+            id="minute-hand"
+            x1="100"
+            y1="100"
+            x2="100"
+            y2="40"
+            stroke="#1cc88a"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <line
+            id="second-hand"
+            x1="100"
+            y1="100"
+            x2="100"
+            y2="30"
+            stroke="#f6c23e"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <circle cx="100" cy="100" r="5" fill="#4e73df" />
+        </svg>
+      </div>
 
-        <!-- Alarm Status -->
-        <div id="alarm-status"></div>
+      <!-- Digital Clock Display -->
+      <div id="digital-clock" class="digital-clock"></div>
 
-        <!-- Controls -->
-        <div id="controls">
-            <!-- Time Picker -->
-            <div id="time-picker">
-                <input type="time" id="alarm-time" required>
-            </div>
+      <!-- Alarm Status -->
+      <div id="alarm-status" class="status-message"></div>
 
-            <!-- Sound Controls -->
-            <div id="sound-controls">
-                <select id="sound-selector">
-                    <option value="sound1.mp3">Sound1</option>
-                    <option value="sound2.mp3">Sound2</option>
-                    <option value="sound3.mp3">Sound3</option>
-                </select>
-                <button id="play-sound-btn" aria-label="Play Sound"><i class="fas fa-play"></i></button>
-                <input type="file" id="custom-sound-input" accept="audio/*" style="display:none;">
-                <button id="upload-sound-btn">Upload Sound</button>
-                <span id="uploaded-sound-name"></span>
-                <input type="range" id="volume-control" min="0" max="1" step="0.01" value="1">
-            </div>
-
-            <!-- Set/Cancel Alarm, Save Bookmark, and Snooze Buttons -->
-            <div id="alarm-buttons">
-                <button id="set-alarm-btn" aria-label="Set Alarm">Set Alarm</button>
-                <button id="save-bookmark-btn">Save Alarm Bookmark</button>
-                <button id="snooze-btn" style="display: none;">Snooze</button>
-            </div>
+      <!-- Controls -->
+      <div id="controls" class="controls-container">
+        <!-- Time Picker -->
+        <div id="time-picker" class="control-group">
+          <label for="alarm-time"><i class="fas fa-clock"></i> Set Alarm</label>
+          <input type="time" id="alarm-time" required />
         </div>
 
-        <!-- Bookmarked Alarms Section -->
-        <div id="bookmarked-alarms">
-            <h3>Bookmarked Alarms</h3>
-            <div id="bookmarks-container">
-                <!-- Bookmarked alarms will be displayed here -->
-            </div>
+        <!-- Sound Controls -->
+        <div id="sound-controls" class="control-group">
+          <label for="sound-selector"
+            ><i class="fas fa-music"></i> Choose Sound</label
+          >
+          <div class="sound-options">
+            <select id="sound-selector" class="form-select">
+              <option value="Sounds/sound1.mp3">Sound1</option>
+              <option value="Sounds/sound2.mp3">Sound2</option>
+              <option value="Sounds/sound3.mp3">Sound3</option>
+            </select>
+            <button
+              id="play-sound-btn"
+              class="btn btn-primary"
+              aria-label="Play Sound"
+            >
+              <i class="fas fa-play"></i>
+            </button>
+            <button
+              id="upload-sound-btn"
+              class="btn btn-secondary"
+              aria-label="Upload Sound"
+            >
+              <i class="fas fa-upload"></i>
+            </button>
+            <input
+              type="file"
+              id="custom-sound-input"
+              accept="audio/*"
+              style="display: none"
+            />
+          </div>
+          <span id="uploaded-sound-name" class="uploaded-sound-name"></span>
+          <label for="volume-control"
+            ><i class="fas fa-volume-up"></i> Volume</label
+          >
+          <input
+            type="range"
+            id="volume-control"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+          />
         </div>
+
+        <!-- Set/Cancel Alarm, Save Bookmark, and Snooze Buttons -->
+        <div id="alarm-buttons" class="button-group">
+          <button
+            id="set-alarm-btn"
+            class="btn btn-success"
+            aria-label="Set Alarm"
+          >
+            Set Alarm
+          </button>
+          <button id="save-bookmark-btn" class="btn btn-warning">
+            Save Bookmark
+          </button>
+          <button id="snooze-btn" class="btn btn-info" style="display: none">
+            Snooze
+          </button>
+        </div>
+      </div>
+
+      <!-- Bookmarked Alarms Section -->
+      <div id="bookmarked-alarms" class="bookmarks-container">
+        <h3>Bookmarked Alarms</h3>
+        <div id="bookmarks-container" class="bookmarks-list">
+          <!-- Bookmarked alarms will be displayed here -->
+        </div>
+      </div>
     </div>
 
     <!-- Alarm Sound -->
@@ -101,7 +212,10 @@
           <a href="https://github.com/gponi" class="text-light mx-2">
             <i class="fab fa-github fa-2x"></i>
           </a>
-          <a href="https://linkedin.com/in/gannonponichtera" class="text-light mx-2">
+          <a
+            href="https://linkedin.com/in/gannonponichtera"
+            class="text-light mx-2"
+          >
             <i class="fab fa-linkedin fa-2x"></i>
           </a>
           <!-- Add more social links if needed -->
@@ -110,11 +224,9 @@
     </footer>
 
     <!-- Bootstrap JS Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JS -->
     <script src="alarm-clock.js"></script>
-</body>
+  </body>
 </html>
