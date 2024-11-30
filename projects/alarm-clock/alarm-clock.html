@@ -135,9 +135,11 @@
           >
           <div class="sound-options">
             <select id="sound-selector" class="form-select">
-              <option value="Sounds/sound1.mp3">Sound1</option>
-              <option value="Sounds/sound2.mp3">Sound2</option>
-              <option value="Sounds/sound3.mp3">Sound3</option>
+              <option value="Sounds/sound1.mp3">Lofi Alarm</option>
+              <option value="Sounds/sound2.mp3">Old Ringtone</option>
+              <option value="Sounds/sound3.mp3">Emergency Alert</option>
+              <option value="Sounds/sound4.mp3">FIRE ALARM</option>
+              <option value="Sounds/sound5.mp3">LOUDEST ALARM</option>
             </select>
             <button
               id="play-sound-btn"
@@ -189,6 +191,92 @@
           <button id="snooze-btn" class="btn btn-info" style="display: none">
             Snooze
           </button>
+        </div>
+
+        <!-- Advanced Options Toggle -->
+        <div class="form-check form-switch mt-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="advanced-options-toggle"
+          />
+          <label class="form-check-label" for="advanced-options-toggle"
+            >Enable Advanced Options</label
+          >
+        </div>
+
+        <!-- Advanced Options Section -->
+        <div id="advanced-options" style="display: none">
+          <!-- Random Advanced Sound Checkbox -->
+          <div class="form-check random-sound-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="random-advanced-sound"
+            />
+            <label class="form-check-label" for="random-advanced-sound"
+              >Choose random advanced sound</label
+            >
+          </div>
+          <!-- Advanced Sounds List -->
+          <div class="advanced-sounds">
+            <!-- Advanced sound checkboxes -->
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Sounds/whisper.mp3"
+                id="sound-whisper"
+              />
+              <label class="form-check-label" for="sound-whisper"
+                >Woman whispering wake up</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Sounds/rooster.mp3"
+                id="sound-rooster"
+              />
+              <label class="form-check-label" for="sound-rooster"
+                >Rooster</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Sounds/baby_wakeup.mp3"
+                id="sound-baby"
+              />
+              <label class="form-check-label" for="sound-baby"
+                >Your son wants you to wake up</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Sounds/nuclear-warning.mp3"
+                id="sound-nuclear"
+              />
+              <label class="form-check-label" for="sound-nuclear"
+                >Nuclear missile warning</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="Sounds/screaming.mp3"
+                id="sound-screaming"
+              />
+              <label class="form-check-label" for="sound-rooster"
+                >Screaming</label
+              >
+            </div>
+          </div>
         </div>
       </div>
 
